@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Spam Email Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #383636;
+            border-radius: 5px;
+            background-color: rgb(223, 222, 222);
+            text-align: center;
+        }
+
+        .cont {
+            margin-bottom: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 5px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #060706;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navbar {
+            padding: 0 0 6rem;
+            background-color: black;
+        }
+
+        .line {
+            text-align: left;
+            font-size: 24px;
+        }
+
+        .content {
+            text-align: right;
+        }
+
+        .hel {
+            text-align: left;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-brand p-4">
+        <div>
+            <h1 style="color: #fff;" class="hel">SPAMZchk</h1>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- <h2>Spam Email Checker</h2> -->
+        <form id="spamCheckerForm">
+            <div class="form-group">
+                <label class="line" for="emailContent">Paste Email Content:</label>
+                <textarea class="content" id="emailContent" rows="25" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Check for Spam">
+            </div>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Handle form submission
+        document.getElementById("spamCheckerForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submissio
+            // Get email content
+            var emailContent = document.getElementById("emailContent").value
+            // Perform spam check (using the function from the external JavaScript file)
+            var isSpam = performSpamCheck(emailContent);
+            // Display result
+            var resultElement = document.getElementById("result");
+            resultElement.innerHTML = isSpam ? "<strong>Spam detected!</strong>" : "<strong>Notspam.</strong>";
+        });
+    </script>
+    <div>
+        <footer style="color: #fff;text-align: right;padding-right: 50px;">By SHARIQ
+            ADNAN</footer>
+        <footer style="color: #fff;text-align: right;padding-right: 50px;">21BBS0105</footer>
+    </div>
+</body>
+
+</html>
